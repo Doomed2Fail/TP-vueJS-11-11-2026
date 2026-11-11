@@ -9,14 +9,14 @@
   </div>
 
   <div class="grid">
-    <CountryCard v-for="country in paysAffiches" :key="country.cca3" :country="country" />
+    <CountryCard v-for="country in paysAffiches" :key="country.alpha3Code" :country="country" />
   </div>
 </template>
 
 <script>
 import CountryCard from '../components/CountryCard.vue'
 
-const API_URL = 'https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags,cca3'
+const API_URL = 'https://countries.dev/countries'
 
 export default {
   name: 'CountryListView',
@@ -30,18 +30,12 @@ export default {
     }
   },
   computed: {
-    // TODO 2 : this.countries filtré selon this.recherche (nom commun,
-    // insensible à la casse)
     paysAffiches() {
       const texte = this.recherche.trim().toLowerCase()
-      return this.countries.filter(country => country.name.common.toLowerCase().includes(texte))
+      return this.countries.filter(country => country.name.toLowerCase().includes(texte))
     }
   },
   methods: {
-    // TODO 1 : GET API_URL avec fetch. N'oubliez pas que fetch() ne rejette
-    // pas sur une erreur HTTP (404, 500...) -- vérifiez response.ok avant de
-    // parser le JSON, et renseignez this.error dans un catch. Dans tous les
-    // cas (succès ou échec), this.loading doit repasser à false à la fin.
     async chargerPays() {
       this.loading = true
       this.error = null
@@ -52,7 +46,7 @@ export default {
         if (!Array.isArray(resultat)) throw new Error('Format de réponse inattendu')
         this.countries = resultat
       } catch (error) {
-        this.error = 'Impossible de charger les pays. La version de l’API utilisée par le TP peut être indisponible.'
+        this.error = 'Impossible de charger les pays.'
       } finally {
         this.loading = false
       }

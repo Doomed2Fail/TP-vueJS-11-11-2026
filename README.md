@@ -15,4 +15,4 @@ npm run dev
 
 Pour l'autre projet, remplacer `TP7` par `TP8`. Ouvrir l'adresse affichée dans le terminal. Pour arrêter le serveur : Ctrl+C. Le TP 7 nécessite Internet pour contacter l'API ; le chargement initial du TP 8 est simulé et ne sauvegarde pas les tâches après actualisation.
 
-**Limite du TP 7 :** l'adresse REST Countries v3.1 prescrite dans l'énoncé répond désormais qu'elle est abandonnée. La version actuelle nécessite une clé API. Le programme signale l'erreur ; la liste et les détails ne peuvent pas être testés en direct avec cette ancienne adresse. Voir la [documentation de migration de REST Countries](https://restcountries.com/docs/countries/legacy-api-deprecation).
+**TP 7 :** l'ancienne API REST Countries indiquée dans l'énoncé a été remplacée par [countries.dev](https://countries.dev/docs), accessible sans clé. Les champs ont été adaptés : `name`, `alpha3Code` et `capital`. Cette API fournit le nom local plutôt que le nom officiel.
